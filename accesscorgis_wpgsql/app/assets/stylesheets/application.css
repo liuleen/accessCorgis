@@ -1,15 +1,225 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+
+
+ html, body, section, article, h1, h2, p, nav, main, figure {
+ 	margin: 0;
+ 	border: 0;
+ 	padding: 0;
+ 	font: inherit;
+ 	text-align: inherit;
+ 	text-decoration: inherit;
+ 	color: inherit;
+ 	background: transparent;
+ 	font-family: 'Amatic SC', cursive;
+ 	font-size: 30px;
+ }
+
+ body {
+ 	background-image: url("https://i.pinimg.com/236x/e8/cc/c9/e8ccc92d8b719836ed7b388ce529e86c--hey-girl-pembroke-welsh-corgi.jpg");
+ 	background-repeat: repeat;
+ }
+
+ nav {
+ 	width: 100%;
+ 	height: 60px;
+ 	display: flex;
+ 	justify-content: space-between;
+ 	align-items: center;
+ 	box-sizing: border-box;
+ 	padding: 0 20px;
+ 	color: #ddd;
+ 	border-radius: 10px;
+ }
+
+ h1 {
+ 	font-size: 60px;
+ 	color: #000;
+ }
+
+ a {
+ 	color: #000;
+ 	text-decoration: none;
+ }
+
+ a:hover {
+ 	color: #fff;
+ }
+
+
+ nav a {
+ 	color: #000;
+ 	padding: 0px 10px;
+ }
+
+ table {
+ 	background-color: #ccc;
+ 	margin: auto;
+ 	border-radius: 5px;
+ }
+
+ th {
+ 	background-color: #651d28;
+ 	color: #000;
+ 	padding: 10px 20px;
+ 	border-radius: 5px 5px 0px 0px;
+ }
+
+
+
+ textarea, select, input {
+ 	font-family: 'Amatic SC', cursive;
+ 	background-color: inherit;
+ 	border: 0px;
+ 	border-bottom: 2px solid #000;
+ 	font-size: 30px;
+ 	margin: 5px 10px;
+ }
+
+ input[type="submit"]:hover {
+ 	cursor: pointer;
+ 	color: #ddd;
+ 	border-bottom: 2px solid #ddd;
+ }
+
+ input[type="submit"] {
+ 	font-weight: bold;
+ }
+
+ input:focus, select:focus, textarea:focus {
+ 	outline: none;
+ }
+
+ label {
+ 	font-weight: bold;
+ 	margin: 15px 0px;
+ }
+
+ textarea {
+ 	display: block;
+ 	margin: auto;
+ 	width: 300px;
+ 	background-color: white;
+ }
+
+ nav form {
+ 	display: inline;
+ }
+
+ nav input {
+ 	color: #000;
+ }
+
+ .main-nav {
+ 	top: 0px;
+ 	z-index: 100;
+ 	width: 97%;
+ 	margin-left: 1.5%;
+ 	overflow: hidden;
+ }
+
+ .main-nav .search-bar {
+ 	width: 3fr;
+ 	float: center;
+ }
+
+ .main-nav .search-bar input[type=text] {
+ 	width: 3fr;
+ 	padding: 6px;
+ 	margin-top: 8px;
+ 	font-size: 17px;
+ 	background-color: #ddd;
+ 	border: none;
+ }
+
+ .main-nav .search-bar button {
+ 	float: right;
+ 	padding: 6px 10px;
+ 	margin-top: 8px;
+ 	margin-right: 16px;
+ 	background: #ddd;
+ 	font-size: 17px;
+ 	border: none;
+ 	cursor: pointer;
+ }
+
+ .button_to div {
+ 	display: inline;
+ }
+
+
+ .jumbotron {
+ 	height: 500px;
+ 	width: 100%;
+ 	background-size: cover;
+ 	background-image: url("corgi_jumbotron.jpg");
+ }
+
+ .jumbotron h1 {
+ 	font-size: 150px;
+ 	color: #000;
+ 	position: absolute;
+ 	bottom: 120px;
+ 	right: 50px;
+ }
+
+ .corgi-index-holder {
+ 	margin: 50px auto;
+ 	width: 920px;
+ 	background-color: rgba(38, 40, 66, 0.75);
+ 	border-radius: 10px;
+ }
+
+ .corgi-index {
+ 	width: 100%;
+ 	display: flex;
+ 	justify-content: space-around;
+ 	flex-wrap: wrap;
+ }
+
+ .corgi-index-item {
+ 	padding: 20px;
+ 	margin: 20px 0;
+ 	width: 235px;
+ 	height: 280px;
+ 	display: flex;
+ 	align-items: center;
+ 	justify-content: center;
+ 	background-color: #ddd;
+ 	border-radius: 5px;
+ }
+
+ .corgi-index-item a:hover {
+ 	color: #fff;
+ }
+
+ .page {
+ 	display: flex;
+ 	justify-content: space-around;
+ }
+
+ .centered-box {
+ 	width: 500px;
+ 	margin: 50px 0;
+ 	background-color: rgba(38, 40, 66, 0.75);
+ 	text-align: center;
+ 	padding: 50px;
+ 	border-radius: 15px;
+ }
+
+ .description {
+ 	background-color: rgba(218, 216, 190, 0.5);
+ 	border-radius: 5px;
+ 	width: 500px;
+ 	height: 100px;
+ 	text-align: justify;
+ }
+
+ .button {
+ 	color: inherit;
+ 	border: 1px solid #000;
+ 	border-radius: 5px;
+ }
+
+ .button:hover {
+ 	border: 1px solid #fff;
+ 	color: #fff;
+ }
