@@ -15,7 +15,7 @@ class CorgisController < ApplicationController
 
   # GET /corgis/new
   def new
-    @corgi = current_user.corgi.build
+    @corgi = current_user.corgis.build
   end
 
   # GET /corgis/1/edit

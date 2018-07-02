@@ -41,7 +41,7 @@
 
 
             <% if user_signed_in? %>
-
+            <%= link_to 'Sell', '#', class: "navbar-item button is-dark" %>
 
               <div class="navbar-item has-dropdown is-hoverable">
                 <%= link_to 'Account', edit_user_registration_path, class: "navbar-link" %>

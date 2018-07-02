@@ -1,34 +1,60 @@
-<section class="page"><div class="centered-box">
-	<img src="http://placekitten.com/g/300/300" >
-	<h1><%= @corgi.name %></h1>
+<% content_for :body_class, 'bg-light' %>
 
-	<table>
-	<tr>
-			<th>Attribute</th>
-			<th>Value</th>
-	</tr>
-	<% [:name, :size, :color, :description].each do |attr_name| %>
-			<tr>
-				<td><%= attr_name %></td>
-				<td><%= @corgi.send(attr_name) %></td>
-			</tr>
-	<% end %>
-	</table>
+<section class="section corgi-show">
+  <div class="columns">
+    <div class="column is-8">
+      <h1 class="title is-2"><%= @corgi.name %></h1>
 
-	<br>
-	<div class="description">
-		<%= @corgi.send(:description)%>
-	</div>
+      <ul class="pv1">
+        <% if @corgi.size? %>
+        <li class="inline-block pr3"><%= @corgi.size %></li>
+        <% end %>
 
-	<% if @corgi.user.name == current_user %>
-		<br>
-		<%= link_to "Edit #{@corgi.name}", edit_corgi_url(@corgi), :class => "button" %>
-	<% end %>
+        <% if @corgi.color? %>
+        <li class="inline-block pr3"><%= @corgi.color %></li>
+        <% end %>
+      </ul>
 
-	<br>
+      <div class="feature-image">
+        <%= image_tag(@corgi.image_url(:default)) %>
+      </div>
 
-	<% if logged_in? %>
-	<br>
-		<%= link_to 'Make new request', new_corgi_rental_request_url(corgi_id: @corgi.id), :class => "button" %>
-	<% end %>
-</div></section>
+      <div class="content pa4 mt3 bg-white border-radius-3">
+
+      <h3 class="subtitle is-4">Description</h3>
+      <%= @corgi.description %>
+
+
+      <h3 class="subtitle is-4 pt5">Product Details</h3>
+
+      <table class="table is-narrow">
+        <% if @corgi.color %>
+        <tr>
+          <td class="has-text-weight-bold">Color:</td>
+          <td><%= @corgi.color %></td>
+        </tr>
+        <% end %>
+
+        <% if @corgi.size %>
+          <tr>
+            <td class="has-text-weight-bold">Size:</td>
+            <td><%= @corgi.size %></td>
+          </tr>
+        <% end %>
+
+      </table>
+    </div>
+    </div>
+    <div class="column is-3 is-offset-1">
+      <div class="bg-white pa4 border-radius-3">
+        <h4 class="title is-5 has-text-centered"><%= number_to_currency(@corgi.price) %></h4>
+        <p class="has-text-centered mb4">Sold by <%= @corgi.name %></p>
+        <%= button_to 'Add to cart', "#", class: 'button is-warning add-to-cart' %>
+      </div>
+    </div>
+  </div>
+
+  <% if corgi_author(@corgi) %>
+    <%= link_to 'Edit', edit_corgi_path(@corgi), class: 'button' %>
+  <% end %>
+</section>

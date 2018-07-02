@@ -1,38 +1,47 @@
-<p id="notice"><%= notice %></p>
+<% content_for :header do %>
+<section class="hero is-warning">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Browse our AccessCorgis!
+      </h1>
+    </div>
+  </div>
+</section>
+<% end %>
 
-<h1>Corgis</h1>
+<div class="corgi-index-grid pt4">
+  <% @corgis.each do |corgi| %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Description</th>
-      <th>Size</th>
-      <th>Price</th>
-      <th>Name</th>
-      <th>Image</th>
-      <th>Color</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <div class="corgi border-light">
+      <div class="corgi-thumb">
 
-  <tbody>
-    <% @corgis.each do |corgi| %>
-      <tr>
-        <td><%= corgi.description %></td>
-        <td><%= corgi.size %></td>
-        <td><%= corgi.price %></td>
-        <td><%= corgi.name %></td>
-        <td><%= corgi.image %></td>
-        <td><%= corgi.color %></td>
-        <td><%= link_to 'Show', corgi %></td>
-        <td><%= link_to 'Edit', edit_corgi_path(corgi) %></td>
-        <td><%= link_to 'Destroy', corgi, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
+      <% if corgi.color? %>
+        <div class="condition">
+          <span class="tag is-dark"><%= corgi.color %></span>
+        </div>
+      <% end %>
+      </div>
 
-<%= link_to 'New Corgi', new_corgi_path %>
+
+    <div class="pa3">
+
+      <h3 class="fw7 f4 title"><%= link_to corgi.name, corgi %></h3>
+
+      <p class="has-text-gray fg pt1">Sold by <%= corgi.name %></p>
+
+      <p class="f3 fw6 has-text-right pt2 price"><%= number_to_currency(corgi.price) %></p>
+
+      <% if corgi_author(corgi) %>
+         <%= link_to 'Edit', edit_corgi_path(corgi), class: "button is-small" %>
+         <%= link_to 'Delete', corgi, method: :delete, data: { confirm: "Are you sure ?" }, class: "button is-small" %>
+      <% end %>
+
+    </div>
+  </div>
+  <% end %>
+</div>
+
+<%= link_to 'New Corgi', new_corgi_path %> <br >
 <%= link_to 'Categories', "/categories" %>
