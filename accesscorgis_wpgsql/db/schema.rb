@@ -10,10 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180702011528) do
+ActiveRecord::Schema.define(version: 20180702043221) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "carts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string "title", limit: 100, null: false
@@ -32,6 +37,16 @@ ActiveRecord::Schema.define(version: 20180702011528) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+  end
+
+  create_table "line_items", force: :cascade do |t|
+    t.bigint "corgi_id"
+    t.bigint "cart_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "quantity", default: 1
+    t.index ["cart_id"], name: "index_line_items_on_cart_id"
+    t.index ["corgi_id"], name: "index_line_items_on_corgi_id"
   end
 
   create_table "order_items", force: :cascade do |t|
@@ -99,6 +114,8 @@ ActiveRecord::Schema.define(version: 20180702011528) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "line_items", "carts"
+  add_foreign_key "line_items", "corgis"
   add_foreign_key "order_items", "orders", name: "fk_order_items_to_order"
   add_foreign_key "order_items", "products", name: "fk_order_items_to_product"
   add_foreign_key "product_categories", "categories", name: "fk_product_categories_to_categories"
