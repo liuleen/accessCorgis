@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
+  resources :corgis
   devise_for :users, controllers: {
     registrations: 'registrations'
   }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  root to: redirect('categories#index')
+  root to: redirect('corgis/#index')
 
   resources :categories, only: [:index] do
     resources :products, only: [:index]

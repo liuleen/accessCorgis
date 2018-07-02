@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180701234400) do
+ActiveRecord::Schema.define(version: 20180702011528) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,18 @@ ActiveRecord::Schema.define(version: 20180701234400) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["title"], name: "index_categories_on_title", unique: true
+  end
+
+  create_table "corgis", force: :cascade do |t|
+    t.text "description"
+    t.integer "size"
+    t.decimal "price", precision: 5, scale: 2, default: "0.0"
+    t.string "name"
+    t.string "image"
+    t.string "color"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "order_items", force: :cascade do |t|
