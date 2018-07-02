@@ -1,34 +1,34 @@
-<p id="notice"><%= notice %></p>
+<section class="page"><div class="centered-box">
+	<img src="http://placekitten.com/g/300/300" >
+	<h1><%= @corgi.name %></h1>
 
-<p>
-  <strong>Description:</strong>
-  <%= @corgi.description %>
-</p>
+	<table>
+	<tr>
+			<th>Attribute</th>
+			<th>Value</th>
+	</tr>
+	<% [:name, :size, :color, :description].each do |attr_name| %>
+			<tr>
+				<td><%= attr_name %></td>
+				<td><%= @corgi.send(attr_name) %></td>
+			</tr>
+	<% end %>
+	</table>
 
-<p>
-  <strong>Size:</strong>
-  <%= @corgi.size %>
-</p>
+	<br>
+	<div class="description">
+		<%= @corgi.send(:description)%>
+	</div>
 
-<p>
-  <strong>Price:</strong>
-  <%= @corgi.price %>
-</p>
+	<% if @corgi.user.name == current_user %>
+		<br>
+		<%= link_to "Edit #{@corgi.name}", edit_corgi_url(@corgi), :class => "button" %>
+	<% end %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @corgi.name %>
-</p>
+	<br>
 
-<p>
-  <strong>Image:</strong>
-  <%= @corgi.image %>
-</p>
-
-<p>
-  <strong>Color:</strong>
-  <%= @corgi.color %>
-</p>
-
-<%= link_to 'Edit', edit_corgi_path(@corgi) %> |
-<%= link_to 'Back', corgis_path %>
+	<% if logged_in? %>
+	<br>
+		<%= link_to 'Make new request', new_corgi_rental_request_url(corgi_id: @corgi.id), :class => "button" %>
+	<% end %>
+</div></section>

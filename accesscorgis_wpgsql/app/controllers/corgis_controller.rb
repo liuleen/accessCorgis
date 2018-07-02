@@ -1,10 +1,11 @@
 class CorgisController < ApplicationController
   before_action :set_corgi, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
 
   # GET /corgis
   # GET /corgis.json
   def index
-    @corgis = Corgi.all
+    @corgis = Corgi.all.order("created_at desc")
   end
 
   # GET /corgis/1
@@ -14,7 +15,7 @@ class CorgisController < ApplicationController
 
   # GET /corgis/new
   def new
-    @corgi = Corgi.new
+    @corgi = current_user.corgi.build
   end
 
   # GET /corgis/1/edit
@@ -24,7 +25,7 @@ class CorgisController < ApplicationController
   # POST /corgis
   # POST /corgis.json
   def create
-    @corgi = Corgi.new(corgi_params)
+    @corgi = current_user.corgis.build(corgi_params)
 
     respond_to do |format|
       if @corgi.save
